@@ -2,12 +2,12 @@ import DefaultLayout from '@/Layouts/DefaultLayout.vue'
 
 export default [
     {
-        path: "/Payroll/Payslip",
+        path: "/Payroll",
         component: DefaultLayout,
         meta: { requiresAuth: true },
         children: [
             {
-                path: '',
+                path: 'Payslip',
                 name: 'Payslip',
                 component: () => import('@/modules/payroll/payslip/PayrollPayslip.vue')
             }

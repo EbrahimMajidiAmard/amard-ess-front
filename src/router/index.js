@@ -2,10 +2,12 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import AuthRouting from '@/modules/auth/AuthRouting'
 import PayrollRouting from '@/modules/payroll/PayrollRouting'
+import HumanResourcesRouting from '@/modules/HumanResources/HumanResourcesRouting'
 
 const routes = [
   ...AuthRouting,
   ...PayrollRouting,
+  ...HumanResourcesRouting,
   {
     path: '/',
     redirect: '/login'

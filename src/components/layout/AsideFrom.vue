@@ -15,13 +15,13 @@
                 <ul class="main-menu">
                     <li class="slide has-sub">
                         <a href="javascript:void(0);" class="side-menu__item">
-                            <i class="bx  bx-calculator side-menu__icon"></i>
+                            <i class="bx bx-calculator side-menu__icon"></i>
                             <span class="side-menu__label"> حقوق و دستمزد </span>
                             <i class="fe fe-chevron-right side-menu__angle"></i>
                         </a>
                         <ul class="slide-menu child1">
                             <li class="slide">
-                                <router-link to="/Payroll/Payslip" class="side-menu__item">فیش حقوقی</router-link>
+                                <router-link to="/Payroll/Payslip" class="side-menu__item" active-class="active">فیش حقوقی</router-link>
                             </li>
                         </ul>
                     </li>
@@ -33,7 +33,7 @@
                         </a>
                         <ul class="slide-menu child1">
                             <li class="slide">
-                                <router-link to="/Payroll/Payslip" class="side-menu__item "> احکام کارگزینی
+                                <router-link to="/HumanResources/RecruitmentRules" class="side-menu__item" active-class="active"> احکام کارگزینی
                                 </router-link>
                             </li>
                         </ul>
@@ -46,11 +46,11 @@
                         </a>
                         <ul class="slide-menu child1">
                             <li class="slide">
-                                <router-link to="/Payroll/Payslip" class="side-menu__item "> حساب کاربری
+                                <router-link to="/Payroll/Payslip" class="side-menu__item" active-class="active"> حساب کاربری
                                 </router-link>
                             </li>
                             <li class="slide">
-                                <router-link to="/Payroll/Payslip" class="side-menu__item "> رمز عبور </router-link>
+                                <router-link to="/Payroll/Payslip" class="side-menu__item" active-class="active"> رمز عبور </router-link>
                             </li>
                         </ul>
                     </li>
@@ -64,3 +64,21 @@
         </div>
     </aside>
 </template>
+
+<script>
+export default {
+    mounted() {
+        this.$nextTick(() => {
+            const activeLinks = document.querySelectorAll('.router-link-active');
+            activeLinks.forEach(link => {
+                const parentSubMenu = link.closest('.slide-menu');
+                const parentLi = link.closest('.has-sub');
+                if (parentSubMenu && parentLi) {
+                    parentSubMenu.style.display = 'block';
+                    parentLi.classList.add('open');
+                }
+            });
+        });
+    }
+}
+</script>
