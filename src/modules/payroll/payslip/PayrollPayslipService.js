@@ -46,9 +46,9 @@ function usePayslipFilters() {
 
 async function payslipImage(year, month, level) {
     var response = await get(`${payrollUrl}/payment`, {
-        year: year,
-        month: month,
-        level: level
+        year: year.value,
+        month: month.value,
+        level: level.value
     })
 
     if (!response.ok) {
@@ -56,9 +56,8 @@ async function payslipImage(year, month, level) {
         return null;
     }
 
-    window.showMessage(response.statusText, 'success')
-    return response.json()
-    //imageUrl.value = '/assets/img/face.jpg'
+    const blob = await response.blob();
+    imageUrl.value = URL.createObjectURL(blob);
 }
 
 function downloadImage() {

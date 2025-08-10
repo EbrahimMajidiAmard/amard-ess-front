@@ -32,8 +32,9 @@
             </div>
         </div>
     </div>
-    <div  v-if="imageUrl != null" class="row">
-        <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
+    <div  v-if="Service.imageUrl.value != null" class="row">
+        <!-- <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12"> -->
+        <div class="col-12">
             <div class="card custom-card">
                 <img :src="Service.imageUrl.value" class="card-img-top" alt="فیش حقوقی">
                 <div class="card-body">

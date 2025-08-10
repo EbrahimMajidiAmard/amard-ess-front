@@ -20,8 +20,9 @@
                         data-bs-auto-close="outside" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <div class="d-sm-block d-none">
-                                <p class="fw-semibold mb-0 lh-1"> نام کاربری </p><span
-                                    class="op-7 fw-normal d-block fs-11"> کد پرسنلی : 0123 </span>
+                                <p class="fw-semibold mb-0 lh-1" v-show="fullName"> {{ fullName }} </p>
+                                <span class="op-7 fw-normal d-block fs-11" v-show="personalCode"> کد پرسنلی :
+                                    {{ personalCode }} </span>
                             </div>
                             <div class="ms-sm-2 ms-0">
                                 <img src="/assets/img/face.jpg" alt="img" width="32" height="32" class="rounded-circle">
@@ -55,13 +56,28 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { get, userUrl } from '@/config/apiConfig'
 
 const router = useRouter()
+const fullName = ref('')
+const personalCode = ref('')
 
 function logout() {
-  localStorage.removeItem('accessToken')
-  localStorage.removeItem('refreshToken')
-  router.push('/login')
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('refreshToken')
+    router.push('/login')
 }
+
+getCurrentUser()
+
+async function getCurrentUser() {
+    const response = await get(`${userUrl}/me`);
+    var data = await response.json()
+    fullName.value = data.name
+    personalCode.value = data.personalCode
+}
+
+
 </script>
