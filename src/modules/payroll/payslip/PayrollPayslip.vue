@@ -32,14 +32,14 @@
             </div>
         </div>
     </div>
-    <div  v-if="Service.imageUrl.value != null" class="row">
-        <!-- <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12"> -->
+    <!-- <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12"> -->
+    <div v-if="imageUrl != null" class="row">
         <div class="col-12">
             <div class="card custom-card">
-                <img :src="Service.imageUrl.value" class="card-img-top" alt="فیش حقوقی">
+                <img :src="imageUrl" class="card-img-top" alt="فیش حقوقی">
                 <div class="card-body">
                     <div class="d-grid">
-                        <button @click="Service.downloadImage"
+                        <button @click="downloadImage"
                             class="btn btn-primary-light btn-wave waves-effect waves-light">دانلود فیش</button>
                     </div>
                 </div>
@@ -51,12 +51,5 @@
 <script setup>
 import PageRoute from '@/components/common/PageRoute.vue'
 import SimpleSelect from '@/components/common/SimpleSelect.vue'
-import * as Service from '@/modules/payroll/payslip/PayrollPayslipService'
-
-const { selectedYear, selectedMonth, selectedLevel, YearOptions, MonthOptions, LevelOptions } = Service.usePayslipFilters()
-
-async function submitForm() {
-    await Service.payslipImage(selectedYear, selectedMonth, selectedLevel)
-}
-
+import { imageUrl, selectedYear, selectedMonth, selectedLevel, YearOptions, MonthOptions, LevelOptions, submitForm, downloadImage } from './PayrollPayslipService';
 </script>
