@@ -32,7 +32,8 @@ onMounted(async () => {
     const scripts = [
       '/assets/lib/bootstrap/js/bootstrap.bundle.min.js',
       '/assets/lib/@popperjs/core/umd/popper.min.js',
-      '/assets/js/defaultmenu.min.js']
+      '/assets/js/defaultmenu.min.js'
+    ]
 
     scripts.reduce((prev, src) => {
       return prev.then(() => new Promise((resolve) => {

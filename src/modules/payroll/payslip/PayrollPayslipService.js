@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import { get, payrollUrl } from "@/config/apiConfig";
+import {GetBlob} from '@/unity/ImageTools'
 
 const imageUrl = ref(null)
 
@@ -57,7 +58,7 @@ async function payslipImage(year, month, level) {
     }
 
     const blob = await response.blob();
-    imageUrl.value = URL.createObjectURL(blob);
+    imageUrl.value = await GetBlob(blob);
 }
 
 function downloadImage() {
