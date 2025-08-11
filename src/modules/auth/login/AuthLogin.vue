@@ -7,7 +7,7 @@
                         <p class="h5 fw-semibold mb-2 text-center text-primary">فرم ورود</p>
                         <p class="mb-4 op-7 fw-normal text-center text-muted">سامانه خدمات پرسنلی</p>
                     </div>
-                    <form class="row gy-3" @submit.prevent="submitForm" >
+                    <form class="row gy-3" @submit.prevent="submitForm">
                         <div class="col-xl-12">
                             <label for="NationalCode" class="form-label">کد ملی</label>
                             <input id="NationalCode" v-model="NationalCode" type="text"
@@ -24,6 +24,13 @@
                                 </button>
                             </div>
                         </div>
+
+                        <div>
+                            <p>
+                                <a href="#" class="text-primary" @click.prevent="redirect"> رمز عبور خود را فراموش کردید؟ </a>
+                            </p>
+                        </div>
+
                         <div class="col-xl-12 d-grid mt-3">
                             <button type="submit" class="btn btn-lg btn-primary">ورود به سیستم</button>
                         </div>
@@ -31,7 +38,6 @@
                     <div class="text-center">
                         <p class="fs-12 mt-3">
                             آیا حساب کاربری ندارید؟
-                            <!-- <a class="text-primary" @click.prevent="redirect"> ثبت نام </a> -->
                             <a href="#" class="text-primary" @click.prevent="redirect">ثبت نام</a>
                         </p>
                     </div>
