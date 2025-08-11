@@ -3,7 +3,7 @@
         <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-6 col-sm-8 col-12">
             <div class="card custom-card">
                 <div class="card-body pt-5 px-5">
-                    <a href="#" @click.prevent="$router.push('/login')" class="d-inline-block mb-3 d-inline-block position-absolute end-0 top-0 m-3 fs-4 text-primary pointer">
+                    <a href="#" @click.prevent="$router.push('/auth/login')" class="d-inline-block mb-3 d-inline-block position-absolute end-0 top-0 m-3 fs-4 text-primary pointer">
                         <i class="ri-arrow-left-line"></i>
                     </a>
 
@@ -34,7 +34,7 @@
                         </div>
                     </form>
                     <div class="text-center mt-3">
-                        <a href="https://www.amardco.com/"><img src="favicon.png" alt="" title="" width="50" height="50" /></a>
+                        <a href="https://www.amardco.com/"><img src="/favicon.png" alt="" title="" width="50" height="50" /></a>
                         <p class="text-muted">
                             تمامی حقوق این نرم افزار متعلق به شرکت تحلیلگران آمارد می باشد.
                         </p>

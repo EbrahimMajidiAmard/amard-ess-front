@@ -12,7 +12,7 @@ async function getCurrentUser () {
 function logout(router) {
     localStorage.removeItem('accessToken')
     localStorage.removeItem('refreshToken')
-    router.push('/login')
+    router.push('/auth/login')
 }
 
 export { getCurrentUser, logout }

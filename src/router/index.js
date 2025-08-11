@@ -12,7 +12,7 @@ const routes = [
   ...SettingRouting,
   {
     path: '/',
-    redirect: '/login'
+    redirect: '/auth/login'
   }
 ]
 
@@ -25,7 +25,7 @@ router.beforeEach((to, from, next) => {
   const isAuthenticated = !!localStorage.getItem('accessToken')
 
   if (to.meta.requiresAuth && !isAuthenticated) {
-    next({ path: '/Login' })
+    next({ path: '/auth/login' })
   } else {
     next()
   }
