@@ -3,13 +3,8 @@
     <div class="ms-md-1 ms-0">
       <nav>
         <ol class="breadcrumb mb-0">
-          <li
-            v-for="(crumb, index) in breadcrumbs"
-            :key="index"
-            class="breadcrumb-item"
-            :class="{ active: index === 0 }"
-            aria-current="page"
-          >
+          <li v-for="(crumb, index) in breadcrumbs" :key="index" class="breadcrumb-item"
+            :class="{ active: index === 0 }" aria-current="page">
             <template v-if="index >= 0">
               {{ crumb.text }}
             </template>
@@ -24,9 +19,18 @@
   </div>
 </template>
 
-<script setup>
+<!-- <script setup>
 import { defineProps } from 'vue'
 
+defineProps({
+  breadcrumbs: {
+    type: Array,
+    default: () => []
+  }
+})
+</script> -->
+<script setup>
+/* global defineProps */
 defineProps({
   breadcrumbs: {
     type: Array,

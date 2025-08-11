@@ -43,7 +43,7 @@
                             </router-link>
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex" @click="logout">
+                            <a class="dropdown-item d-flex" @click="handleLogout">
                                 <i class="ti ti-logout fs-18 me-2 op-7"></i>خروج از حساب کاربری
                             </a>
                         </li>
@@ -55,28 +55,21 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { get, userUrl } from '@/config/apiConfig'
+import { onMounted, ref } from 'vue'
+import {getCurrentUser, logout } from '@/unity/UserTools'
 
 const router = useRouter()
 const fullName = ref('')
 const personalCode = ref('')
 
-function logout() {
-    localStorage.removeItem('accessToken')
-    localStorage.removeItem('refreshToken')
-    router.push('/login')
+onMounted(async () => {
+  const user = await getCurrentUser()
+  fullName.value = user.name
+  personalCode.value = user.personalCode
+})
+
+function handleLogout() {
+  logout(router)
 }
-
-getCurrentUser()
-
-async function getCurrentUser() {
-    const response = await get(`${userUrl}/me`);
-    var data = await response.json()
-    fullName.value = data.name
-    personalCode.value = data.personalCode
-}
-
-
 </script>
