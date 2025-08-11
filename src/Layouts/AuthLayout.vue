@@ -13,10 +13,7 @@ onMounted(async () => {
     window.location.reload()
   } else {
     sessionStorage.removeItem('reloaded')
-    const scripts = [
-      './assets/lib/@popperjs/core/umd/popper.min.js',
-      './assets/lib/bootstrap/js/bootstrap.bundle.min.js',
-      './assets/js/show-password.js']
+    const scripts = ['./assets/lib/bootstrap/js/bootstrap.bundle.min.js']
 
     scripts.forEach(src => {
       const script = document.createElement('script')

@@ -46,11 +46,11 @@
                         </a>
                         <ul class="slide-menu child1">
                             <li class="slide">
-                                <router-link to="/Payroll/Payslip" class="side-menu__item" active-class="active"> حساب کاربری
+                                <router-link to="/Setting/UserAccount" class="side-menu__item" active-class="active"> حساب کاربری
                                 </router-link>
                             </li>
                             <li class="slide">
-                                <router-link to="/Payroll/Payslip" class="side-menu__item" active-class="active"> رمز عبور </router-link>
+                                <router-link to="/Setting/ChangePassword" class="side-menu__item" active-class="active"> رمز عبور </router-link>
                             </li>
                         </ul>
                     </li>

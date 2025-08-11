@@ -32,16 +32,15 @@
                     <ul class="main-header-dropdown dropdown-menu pt-0 overflow-hidden header-profile-dropdown dropdown-menu-end"
                         aria-labelledby="mainHeaderProfile">
                         <li>
-                            <a class="dropdown-item d-flex" asp-area="Setting" asp-controller="Password"
+                            <router-link to="/Setting/ChangePassword" class="dropdown-item d-flex" asp-area="Setting" asp-controller="Password"
                                 asp-action="Index">
                                 <i class="ti ti-lock fs-18 me-2 op-7"></i> رمز عبور
-                            </a>
+                            </router-link>
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex" asp-area="Setting" asp-controller="Account"
-                                asp-action="Index">
+                            <router-link to="/Setting/UserAccount" class="dropdown-item d-flex" >
                                 <i class="ti ti-user-circle fs-18 me-2 op-7"></i> حساب کاربری
-                            </a>
+                            </router-link>
                         </li>
                         <li>
                             <a class="dropdown-item d-flex" @click="logout">
