@@ -42,7 +42,7 @@
                         </p>
                     </div>
                     <div class="text-center mt-3">
-                        <a href="https://www.amardco.com/"><img src="favicon.png" alt="" title="" width="50"
+                        <a href="https://www.amardco.com/"><img src="/favicon.png" alt="" title="" width="50"
                                 height="50" /></a>
                         <p class="text-muted">
                             تمامی حقوق این نرم افزار متعلق به شرکت تحلیلگران آمارد می باشد.

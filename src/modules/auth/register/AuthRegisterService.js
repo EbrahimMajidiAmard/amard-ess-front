@@ -23,7 +23,7 @@ function register() {
             }
 
             window.showMessage("ثبت نام شما با موفقیت انجام شد", "success")
-            router.push('/login')
+            router.push('/auth/login')
 
         } catch (err) {
             window.showMessage(err.message, "error");

@@ -34,7 +34,7 @@ function login() {
 function register() {
   const router = useRouter()
   const redirect = async () => {
-    router.push('/register')
+    router.push('/auth/register')
   }
   return { redirect }
 }
