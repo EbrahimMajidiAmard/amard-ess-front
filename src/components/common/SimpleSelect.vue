@@ -8,20 +8,6 @@
     </select>
 </template>
 
-<!-- <script setup>
-import { defineProps } from 'vue'
-defineProps({
-    modelValue: [String, Number],
-    options: {
-        type: Array,
-        required: true
-    },
-    placeholder: {
-        type: String,
-        default: 'لطفا یک گزینه انتخاب کنید'
-    }
-})
-</script> -->
 <script setup>
 /* global defineProps */
 defineProps({

@@ -9,15 +9,17 @@ function login() {
 
   const submitForm = async () => {
     try {
+      const validation = loginValidation()
+      if (validation == false)
+        return
+
       const response = await post(`${authUrl}/login`, {
         NationalCode: NationalCode.value,
         Password: password.value
       })
 
-      if (!response.ok) {
-        window.showMessage(response.statusText, 'error')
+      if (!response)
         return
-      }
 
       var data = await response.json();
       fillToken(data.accessToken, data.refreshToken)
@@ -28,21 +30,36 @@ function login() {
     }
   }
 
-  return { NationalCode, password, submitForm }
-}
 
-function register() {
-  const router = useRouter()
-  const redirect = async () => {
-    router.push('/auth/register')
+  function loginValidation() {
+    var valid = true;
+
+    if (NationalCode.value == '') {
+      window.requared("کد ملی")
+      valid = false
+    }
+    else if (NationalCode.value.length != 10) {
+      window.fixLength('کد ملی', '10 رقمی')
+      valid = false
+    }
+
+    if (password.value == '') {
+      window.requared("رمز عبور")
+      valid = false
+    }
+    else if (password.value.length < 3) {
+      window.minLength('رمز عبور', '3 رقمی')
+      valid = false
+    }
+
+    return valid
   }
-  return { redirect }
+  return { NationalCode, password, submitForm }
 }
 
 function fillToken(accessToken, refreshToken) {
   if (accessToken) {
     localStorage.setItem('accessToken', accessToken)
-    window.showMessage('به سامانه خدمات پرسنلی خوش آمدید', "success")
   } else
     localStorage.removeItem('accessToken')
 
@@ -54,4 +71,4 @@ function fillToken(accessToken, refreshToken) {
 
 }
 
-export { login, register }
+export { login }

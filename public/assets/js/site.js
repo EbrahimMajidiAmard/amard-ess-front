@@ -59,3 +59,20 @@ window.showMessage = function NotyfNews(message, type) {
     }, 100);
 }
 // #endregion
+
+window.clickEvent = function clickEvent(currentElement, targetId) {
+    // المان هدف رو پیدا می‌کنیم
+    const targetElement = document.getElementById(targetId)
+    if (targetElement) {
+        targetElement.focus()  // مثلاً فوکوس می‌کنیم روی اون
+        // یا هر کاری که می‌خوای اینجا انجام بده
+    }
+}
+
+// #region Validation Message
+window.requared = function requared(filed){window.showMessage( `لطفا ${filed} را وارد کنید` , "error")}
+window.fixLength = function fixLength(filed, length){window.showMessage( `${filed} باید ${length} باشد` , "error")}
+window.minLength = function minLength(filed, length){window.showMessage( `${filed} باید بیشتر از ${length} باشد` , "error")}
+window.maxLength = function maxLength(filed, length){window.showMessage( `${filed} باید کمتر از ${length} باشد` , "error")}
+//window.requared = function requared(filed){window.showMessage( ` ` , "error")}
+// #endregion

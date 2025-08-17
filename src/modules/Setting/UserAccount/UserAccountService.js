@@ -12,6 +12,10 @@ const image = ref('')
 
 async function getUser(){
     const response = await get(`${userUrl}/me`);
+
+    if (!response)
+        return
+
     var data = await response.json()
     fullName.value = data.name
     nationalCode.value =  data.nationalCode

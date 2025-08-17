@@ -47,10 +47,8 @@ async function submitForm() {
         level: selectedLevel.value
     })
 
-    if (!response.ok) {
-        window.showMessage(response.statusText, 'error')
-        return null;
-    }
+    if (!response)
+        return
 
     const blob = await response.blob();
     imageUrl.value = await GetBlob(blob);

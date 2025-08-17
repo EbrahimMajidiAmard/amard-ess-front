@@ -8,10 +8,6 @@
             <template v-if="index >= 0">
               {{ crumb.text }}
             </template>
-            <!-- <template v-else>
-              <a :href="crumb.link">{{ crumb.text }}</a>
-              <router-link :to="crumb.link" class="side-menu__item">{{ crumb.text }}</router-link>
-            </template> -->
           </li>
         </ol>
       </nav>
@@ -19,16 +15,6 @@
   </div>
 </template>
 
-<!-- <script setup>
-import { defineProps } from 'vue'
-
-defineProps({
-  breadcrumbs: {
-    type: Array,
-    default: () => []
-  }
-})
-</script> -->
 <script setup>
 /* global defineProps */
 defineProps({

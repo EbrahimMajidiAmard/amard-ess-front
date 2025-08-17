@@ -30,7 +30,7 @@ onMounted(async () => {
   } else {
     sessionStorage.removeItem('reloaded')
     const scripts = [
-      '/assets/lib/bootstrap/js/bootstrap.bundle.min.js',
+      // '/assets/lib/bootstrap/js/bootstrap.bundle.min.js',
       '/assets/lib/@popperjs/core/umd/popper.min.js',
       '/assets/js/defaultmenu.min.js'
     ]

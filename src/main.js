@@ -1,5 +1,20 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import Router from './router'
+import router from './router'
+import { setBaseApi } from './config/apiConfig'
 
-createApp(App).use(Router).mount('#app')
+async function bootstrap() {
+  try {
+    const response = await fetch('/config.json')
+    const config = await response.json()
+    setBaseApi(config.apiBaseUrl)
+
+    const app = createApp(App)
+    app.use(router)
+    app.mount('#app')
+  } catch (error) {
+    console.error('خطا در بارگذاری config.json:', error)
+  }
+}
+
+bootstrap()

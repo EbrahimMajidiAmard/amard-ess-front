@@ -25,11 +25,11 @@
                             </div>
                         </div>
 
-                        <div>
+                        <!-- <div>
                             <p>
-                                <a href="#" class="text-primary" @click.prevent="redirect"> رمز عبور خود را فراموش کردید؟ </a>
+                                <router-link to="/auth/forgetPassword/verifyMobile" class="text-primary"> رمز عبور خود را فراموش کردید؟ </router-link>
                             </p>
-                        </div>
+                        </div> -->
 
                         <div class="col-xl-12 d-grid mt-3">
                             <button type="submit" class="btn btn-lg btn-primary">ورود به سیستم</button>
@@ -38,7 +38,7 @@
                     <div class="text-center">
                         <p class="fs-12 mt-3">
                             آیا حساب کاربری ندارید؟
-                            <a href="#" class="text-primary" @click.prevent="redirect">ثبت نام</a>
+                             <router-link to="/auth/register" class="text-primary"> ثبت نام </router-link>
                         </p>
                     </div>
                     <div class="text-center mt-3">
@@ -59,6 +59,5 @@
 import * as Service from '@/modules/auth/login/AuthLoignService'
 
 const { NationalCode, password, submitForm } = Service.login()
-const { redirect } = Service.register()
 
 </script>

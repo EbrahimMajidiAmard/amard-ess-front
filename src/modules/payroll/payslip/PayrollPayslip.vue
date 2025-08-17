@@ -32,11 +32,13 @@
             </div>
         </div>
     </div>
-    <!-- <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12"> -->
-    <div v-if="imageUrl != null" class="row">
+    <!-- <div v-if="imageUrl != null" class="row"> -->
+    <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12" v-show="imageUrl">
         <div class="col-12">
             <div class="card custom-card">
-                <img :src="imageUrl" class="card-img-top" alt="فیش حقوقی">
+                <a :href="imageUrl" target="_blank">
+                    <img :src="imageUrl" class="card-img-top" alt="فیش حقوقی">
+                </a>
                 <div class="card-body">
                     <div class="d-grid">
                         <button @click="downloadImage"

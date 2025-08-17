@@ -5,6 +5,8 @@ import PayrollRouting from '@/modules/payroll/PayrollRouting'
 import HumanResourcesRouting from '@/modules/HumanResources/HumanResourcesRouting'
 import SettingRouting from '@/modules/Setting/SettingRouting'
 
+import NotFound from '@/views/NotFound.vue'
+
 const routes = [
   ...AuthRouting,
   ...PayrollRouting,
@@ -13,6 +15,11 @@ const routes = [
   {
     path: '/',
     redirect: '/auth/login'
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFound
   }
 ]
 
