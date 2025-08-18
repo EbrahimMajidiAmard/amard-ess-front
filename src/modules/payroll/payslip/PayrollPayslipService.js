@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import { get, payrollUrl } from "@/config/apiConfig";
+import { get, payrollUrl } from "@/config/BaseRequest";
 import { GetBlob } from '@/unity/ImageTools'
 import { getCurrentUser } from "@/unity/UserTools";
 

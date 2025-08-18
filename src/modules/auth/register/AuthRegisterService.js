@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { post, authUrl } from '@/config/apiConfig'
+import { post, authUrl } from '@/config/BaseRequest'
 
 function register() {
     const PhoneNumber = ref('')

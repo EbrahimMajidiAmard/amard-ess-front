@@ -1,4 +1,4 @@
-import { userUrl, get } from "@/config/apiConfig";
+import { userUrl, get } from "@/config/BaseRequest";
 
 async function getCurrentUser() {
     const response = await get(`${userUrl}/me`);

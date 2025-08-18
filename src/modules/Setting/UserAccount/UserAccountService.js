@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { userUrl, get } from '@/config/apiConfig'
+import { userUrl, get } from '@/config/BaseRequest'
 import { sendBlob } from '@/unity/ImageTools'
 
 const fullName = ref('')
