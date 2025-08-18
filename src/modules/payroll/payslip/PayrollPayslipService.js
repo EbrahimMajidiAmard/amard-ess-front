@@ -1,7 +1,9 @@
-import { ref } from "vue";
+import { ref, nextTick } from "vue";
 import { get, payrollUrl } from "@/config/BaseRequest";
-import { GetBlob } from '@/unity/ImageTools'
+import { blobToBase64 } from '@/unity/ImageTools'
 import { getCurrentUser } from "@/unity/UserTools";
+import GLightbox from "glightbox";
+import "glightbox/dist/css/glightbox.css";
 
 const imageUrl = ref(null)
 const selectedYear = ref('0')
@@ -9,62 +11,89 @@ const selectedMonth = ref('0')
 const selectedLevel = ref('0')
 
 const YearOptions = [
-    { value: '1400', text: 'سال 1400' },
-    { value: '1401', text: 'سال 1401' },
-    { value: '1402', text: 'سال 1402' },
-    { value: '1403', text: 'سال 1403' },
-    { value: '1404', text: 'سال 1404' },
-    { value: '1405', text: 'سال 1405' },
+  { value: '1400', text: 'سال 1400' },
+  { value: '1401', text: 'سال 1401' },
+  { value: '1402', text: 'سال 1402' },
+  { value: '1403', text: 'سال 1403' },
+  { value: '1404', text: 'سال 1404' },
+  { value: '1405', text: 'سال 1405' },
 ]
 
 const MonthOptions = [
-    { value: '1', text: "فروردین" },
-    { value: '2', text: "اردیبهشت" },
-    { value: '3', text: "خرداد" },
-    { value: '4', text: "تیر" },
-    { value: '5', text: "مرداد" },
-    { value: '6', text: "شهریور" },
-    { value: '7', text: "مهر" },
-    { value: '8', text: "آبان" },
-    { value: '9', text: "آذر" },
-    { value: '10', text: "دی" },
-    { value: '11', text: "بهمن" },
-    { value: '12', text: "اسفند" },
+  { value: '1', text: "فروردین" },
+  { value: '2', text: "اردیبهشت" },
+  { value: '3', text: "خرداد" },
+  { value: '4', text: "تیر" },
+  { value: '5', text: "مرداد" },
+  { value: '6', text: "شهریور" },
+  { value: '7', text: "مهر" },
+  { value: '8', text: "آبان" },
+  { value: '9', text: "آذر" },
+  { value: '10', text: "دی" },
+  { value: '11', text: "بهمن" },
+  { value: '12', text: "اسفند" },
 ]
 
 const LevelOptions = [
-    { value: '1', text: 'مرحله 1' },
-    { value: '2', text: 'مرحله 2' },
-    { value: '3', text: 'مرحله 3' },
-    { value: '4', text: 'مرحله 4' },
-    { value: '5', text: 'مرحله 5' },
+  { value: '1', text: 'مرحله 1' },
+  { value: '2', text: 'مرحله 2' },
+  { value: '3', text: 'مرحله 3' },
+  { value: '4', text: 'مرحله 4' },
+  { value: '5', text: 'مرحله 5' },
 ]
 
 async function submitForm() {
-    var response = await get(`${payrollUrl}/payment`, {
-        year: selectedYear.value,
-        month: selectedMonth.value,
-        level: selectedLevel.value
-    })
+  const validation = payslipValidation()
+  if (!validation)
+    return
 
-    if (!response)
-        return
+  var response = await get(`${payrollUrl}/payment`, {
+    year: selectedYear.value,
+    month: selectedMonth.value,
+    level: selectedLevel.value
+  })
 
-    const blob = await response.blob();
-    imageUrl.value = await GetBlob(blob);
+  if (!response)
+    return
+
+  const blob = await response.blob();
+  imageUrl.value = await blobToBase64(blob);
+
+  await nextTick();
+  GLightbox({ selector: '.glightbox' });
 }
 
 async function downloadImage() {
-    if (!imageUrl.value)
-        return;
+  if (!imageUrl.value)
+    return;
 
-    var user = await getCurrentUser()
-    const link = document.createElement('a')
-    link.href = imageUrl.value
-    link.download = `${user.personalCode}-${selectedYear.value}-${selectedMonth.value}-${selectedLevel.value}.jpg`
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
+  var user = await getCurrentUser()
+  const link = document.createElement('a')
+  link.href = imageUrl.value
+  link.download = `${user.personalCode}-${selectedYear.value}-${selectedMonth.value}-${selectedLevel.value}.jpg`
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
 }
 
-export { imageUrl, selectedYear, selectedMonth, selectedLevel, YearOptions, MonthOptions, LevelOptions, submitForm, downloadImage }
+function payslipValidation() {
+  var valid = true;
+
+  if (selectedYear.value == 0) {
+    window.showMessage('لطفا سال را وارد کنید', 'error')
+    valid = false;
+  }
+  if (selectedMonth.value == 0) {
+    window.showMessage('لطفا ماه را وارد کنید', 'error')
+    valid = false;
+  }
+  if (selectedLevel.value == 0) {
+    window.showMessage('لطفا مرحله را وارد کنید', 'error')
+    valid = false;
+  }
+
+  return valid;
+}
+
+export { imageUrl, selectedYear, selectedMonth, selectedLevel, YearOptions, MonthOptions, LevelOptions }
+export { submitForm, downloadImage }

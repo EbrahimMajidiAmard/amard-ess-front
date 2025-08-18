@@ -36,8 +36,8 @@
     <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12" v-show="imageUrl">
         <div class="col-12">
             <div class="card custom-card">
-                <a :href="imageUrl" target="_blank">
-                    <img :src="imageUrl" class="card-img-top" alt="فیش حقوقی">
+                <a :href="imageUrl" class="glightbox">
+                    <img :src="imageUrl" class="card-img-top" alt="فیش حقوقی" data-gallery="payslipGallery">
                 </a>
                 <div class="card-body">
                     <div class="d-grid">
@@ -54,4 +54,5 @@
 import PageRoute from '@/components/common/PageRoute.vue'
 import SimpleSelect from '@/components/common/SimpleSelect.vue'
 import { imageUrl, selectedYear, selectedMonth, selectedLevel, YearOptions, MonthOptions, LevelOptions, submitForm, downloadImage } from './PayrollPayslipService';
+
 </script>
